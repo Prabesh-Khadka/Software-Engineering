@@ -19,7 +19,7 @@ def Sum_odd_and_print_evens():
             even_sums += i
 
     # After the loop print all the even numbers found to the sum
-    print("Even numbers are:", even_numbers)
+    print("Even numbers are between 1 and {num}:", even_numbers)
 
     #After the total sum of the odd numbers
     print("Sum of total odd numbers are:", odd_sum)
