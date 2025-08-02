@@ -28,4 +28,4 @@ print("The minimun temperature in teh array is:", min_value)
 print("The converted temperatue are:", fahrenheit)
 
 #printing the value for the temperature
-print("The days where the temperature execeeds 20:", Days[0])
+print("The days where the temperature execeeds 20 (0=mon, 6=sun):", Days[0])
