@@ -1,0 +1,59 @@
+####################################################
+1. Use Case Name:
+
+User Management and Role-Based Access Control for University Database
+
+2. Actors:
+
+Admin: Superuser with full privileges.
+
+Lecturer: Can access student data, assigned course and section data, and own lecturer data.
+
+Student: Can access own data and view assigned courses and sections.
+
+3. Description:
+
+This use case defines the access levels and operations for different users interacting with the university database. The database consists of the following entities: Student, Lecturer, Section, Course.
+
+4. Preconditions:
+
+Database tables exist: Student, Lecturer, Section, Course.
+
+Users (Admin, Lecturer, Student) are registered and authenticated.
+
+Role-based access control (RBAC) is implemented.
+
+5. Postconditions:
+
+Users can perform only the operations allowed by their roles.
+
+Data integrity and security are maintained.
+
+6. Basic Flow / Privileges:
+Admin:
+
+Logs into the system.
+
+Can create, read, update, delete (CRUD) all records in all tables: Student, Lecturer, Section, Course.
+
+Can manage user accounts, assign roles, and set privileges.
+
+Lecturer:
+
+Logs into the system.
+
+Can view and update records in the Student table.
+
+Can view own Lecturer record only.
+
+Can view and update records in Course and Section tables that are assigned to their students.
+
+Student:
+
+Logs into the system.
+
+Can view their own Student record.
+
+Can view Section and Course data related to their enrollment.
+
+Cannot update any table.
