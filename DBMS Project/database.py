@@ -1,7 +1,7 @@
 import sqlite3
 
 def create_connection():
-    conn = sqlite3.connect("project.db")
+    conn = sqlite3.connect("DBMS.db")
     return conn
 
 def create_table():
@@ -32,7 +32,9 @@ def create_table():
             email TEXT NOT NULL UNIQUE,
             highest_designation TEXT NOT NULL,
             courses_id INTEGER,
-            FOREIGN KEY(courses_id) REFERENCES Courses(id)
+            Student_id INTEGER,
+            FOREIGN KEY(courses_id) REFERENCES Courses(id),
+            FOREIGN KEY(student_id) REFERENCES Student(id)
             )                       
         ''')
     except sqlite3.Error as e:
@@ -66,4 +68,4 @@ def create_table():
 
     conn.commit()
     conn.close()
-    print("All Table created Sucessfully")
+print("All Table created Sucessfully")

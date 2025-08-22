@@ -1,5 +1,12 @@
-from database import create_table
+from database import create_table 
 from database_manager import insert_Student, insert_Lecturer, insert_Courses, insert_Section, view_table, update_record, delete_record
+
+create_table()
+
+insert_Student("John Doe", "john@example.com", "123 Main St", "1", "101")
+insert_Lecturer("Ram", "ram@example.com", "Doctarate in physics", "1", "1")
+insert_Courses("Masters", "1.software Engineering\n2.quantum computing", "1")
+insert_Section("A", "1")
 
 def manager():
     while True:
@@ -27,22 +34,24 @@ def manager():
         elif choice == "2":
             name = input("Enter Lecturer Name: ")
             email = input("Enter Lecturer Email: ")
-            designation = input("Enter Designation: ")
+            highest_designation = input("Enter Designation: ")
             course_id = input("Enter Course ID: ")
-            insert_Lecturer(name, email, designation, course_id)
+            student_id = input("Enter student ID: ")
+            insert_Lecturer(name, email, highest_designation, course_id, student_id)
             print("Lecturer inserted successfully!")
 
         elif choice == "3":
-            ctype = input("Enter Course Type: ")
-            subjects = input("Enter Course Subjects: ")
+            type = input("Enter Course Type: ")
+            courses_subjects = input("Enter Course Subjects: ")
             lecturer_id = input("Enter Lecturer ID: ")
-            insert_Courses(ctype, subjects, lecturer_id)
+            insert_Courses(type, courses_subjects, lecturer_id)
             print("Course inserted successfully!")
 
         elif choice == "4":
             course_id = input("Enter Course ID: ")
             student_id = input("Enter Student ID: ")
             insert_Section(course_id, student_id)
+
             print("Section inserted successfully!")
 
         elif choice == "5":
@@ -73,5 +82,5 @@ def manager():
             print("Invalid choice! Try again.")
 
 # Run the manager
-if __name__ == "__main__":
+if __name__ == "__main__":    
     manager()

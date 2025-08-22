@@ -1,7 +1,7 @@
 from database import create_connection
 import sqlite3 
 
-DB_NAME = "project.db"
+DB_NAME = "DBMS.db"
 
 def create_connection():
     return sqlite3.connect(DB_NAME)
@@ -15,22 +15,25 @@ def insert_Student(name, email, address, courses_id, section_id):
     cursor.execute("INSERT INTO Student (name, email, address, courses_id, section_id) VALUES (?, ?, ?, ?, ?)", 
                    (name, email, address, courses_id, section_id))
     conn.commit()
+    print("Information inserted Sucessfully:")
     conn.close()
 
-def insert_Lecturer(name, email, highest_designation, courses_id):
+def insert_Lecturer(name, email, highest_designation, courses_id, student_id):
     conn = create_connection()
     cursor = conn.cursor()
-    cursor.execute("INSERT INTO Lecturer (name, email, highest_designation, courses_id) VALUES (?, ?, ?, ?)", 
-                   (name, email, highest_designation, courses_id))
+    cursor.execute("INSERT INTO Lecturer (name, email, highest_designation, courses_id, student_id) VALUES (?, ?, ?, ?, ?)", 
+                   (name, email, highest_designation, courses_id, student_id))
     conn.commit()
+    print("Information inserted Sucessfully:")
     conn.close()
 
-def insert_Courses(type, Courses_subjects, lecturer_id):
+def insert_Courses(type, courses_subjects, lecturer_id):
     conn = create_connection()
     cursor = conn.cursor()
-    cursor.execute("INSERT INTO Courses (type, subjects, lecturer_id) VALUES (?, ?, ?)", 
-                   (type, Courses_subjects, lecturer_id))
+    cursor.execute("INSERT INTO Courses (type, courses_subjects, lecturer_id) VALUES (?, ?, ?)", 
+                   (type, courses_subjects, lecturer_id))
     conn.commit()
+    print("Information inserted Sucessfully:")
     conn.close()
 
 def insert_Section(courses_id, student_id):
@@ -39,10 +42,11 @@ def insert_Section(courses_id, student_id):
     cursor.execute("INSERT INTO Section (courses_id, student_id) VALUES (?, ?)", 
                    (courses_id, student_id))
     conn.commit()
+    print("Information inserted Sucessfully:")
     conn.close()
 
 # View records
-def view_table(table_name, table_column=None, Value=None):
+def view_table(table_name):
     conn = create_connection()
     cursor = conn.cursor()
     cursor.execute(f"SELECT * FROM {table_name}")

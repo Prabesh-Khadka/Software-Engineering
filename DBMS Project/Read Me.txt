@@ -1,0 +1,21 @@
+Database for the Yoobee college student
+
+Project Scope
+
+In order to see the relation between student, lecturer course they take and section
+	
+
+Databases Relation:
+
+Student table : ID > name > email > address > course id > section id  
+Lecturer table : ID > name Lecturer > email  > highest designation > courses id > section id 
+Courses table: Course ID > Course type > course subjects > lecturer ID
+Section table: section ID > Course type > student Id
+
+I wanted to create a database for understanding the Student and teacher relation with the course of the yoobee college for which the student are taking the courses and what lecturer are designated for the Course and section of it
+
+
+here you can insert the data into the 4 tables
+view data
+update data on the tables
+delete the row of the table or delete the content of the table
