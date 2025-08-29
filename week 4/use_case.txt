@@ -59,7 +59,7 @@ Can view Section and Course data related to their enrollment.
 Cannot update any table.
 
 
-Relationships
+Relationships(CLASS DIAGRAM)
 
 User is abstract, inherited by Admin, Lecturer, Student.
 
