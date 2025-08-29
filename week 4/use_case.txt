@@ -57,3 +57,14 @@ Can view their own Student record.
 Can view Section and Course data related to their enrollment.
 
 Cannot update any table.
+
+
+Relationships(CLASS DIAGRAM)
+
+User is abstract, inherited by Admin, Lecturer, Student.
+
+Lecturer → Section : 1.. (one lecturer teaches many sections)*
+
+Section → Course : many-to-one (each section belongs to one course).
+
+Student ↔ Section : many-to-many (students can enroll in many sections, sections can have many students).
