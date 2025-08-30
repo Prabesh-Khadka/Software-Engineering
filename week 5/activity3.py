@@ -34,7 +34,7 @@ class Course:
         return self.__course_id
 
 
-# New class to demonstrate public and protected access
+# New class to demonstrate public and protected access for the public and protected attributes
 class University:
     def __init__(self, student, course):
         self.student = student
@@ -52,14 +52,14 @@ s = Student('Ali', 20)
 c1 = Course("C101", "Python Programming", "Computer Science")
 
 # Accessing public and private methods/attributes
-print(c1.course_name)      # Public → accessible
-print(c1.get_course_id())  # Private → safe access
+print(c1.course_name)      # Public -- accessible
+print(c1.get_course_id())  # Private -- safe access
 c1.set_course_id("C202")   # Update private
 print(c1.get_course_id())
 
 print(s.name)         # public
-print(s._age)         # protected → discouraged
-print(s.get_grade())  # private → correct way
+print(s._age)         # protected -- discouraged
+print(s.get_grade())  # private -- correct way
 print(s.is_passing()) # new method using private
 
 # Using University class to access public/protected attributes
