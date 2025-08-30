@@ -41,10 +41,10 @@ class University:
         self.course = course
 
     def show_student_course(self):
-        print(f"Student Name (public): {self.student.name}")       # public → accessible
-        print(f"Student Age (protected): {self.student._age}")    # protected → accessible but discouraged
-        print(f"Course Name (public): {self.course.course_name}") # public → accessible
-        print(f"Course Domain (protected): {self.course._domain}") # protected → accessible but discouraged
+        print(f"Student Name (public): {self.student.name}")       # public -- accessible
+        print(f"Student Age (protected): {self.student._age}")    # protected -- accessible but discouraged
+        print(f"Course Name (public): {self.course.course_name}") # public -- accessible
+        print(f"Course Domain (protected): {self.course._domain}") # protected -- accessible but discouraged
 
 
 # Using the classes
