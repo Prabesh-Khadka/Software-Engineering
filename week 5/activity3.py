@@ -13,6 +13,10 @@ class Student:
     def is_passing(self):
         # Assume A, B, C are passing
         return self.__grade in ['A', 'B', 'C']
+    
+    def updated_info(self, new_grade):
+         self.__grade = new_grade  # Example of updating private attribute internally
+                    
 
 
 # Course class
@@ -50,7 +54,8 @@ class University:
 # Using the classes
 s = Student('Ali', 20)
 c1 = Course("C101", "Python Programming", "Computer Science")
-
+#upgrading the student grade    
+s.updated_info('A+')
 # Accessing public and private methods/attributes
 print(c1.course_name)      # Public -- accessible
 print(c1.get_course_id())  # Private -- safe access
@@ -60,6 +65,7 @@ print(c1.get_course_id())
 print(s.name)         # public
 print(s._age)         # protected -- discouraged
 print(s.get_grade())  # private -- correct way
+#print(s.updated_info()) # new method using private  to update the grade
 print(s.is_passing()) # new method using private
 
 # Using University class to access public/protected attributes
