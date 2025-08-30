@@ -16,10 +16,34 @@ class Student(Person):
     def __init__(self, name, address, age, person_id, academic_record):
         super().__init__(name, address, age, person_id)
         self.academic_record = academic_record
+        self.courses = []  # initialize empty course list
 
     def display_info(self):
-        super().display_info()
+        super().display_info()  # call Person’s version
         print(f"Academic Record: {self.academic_record}")
+        if self.courses: # condition to display info for class course
+            print("Enrolled Courses:")
+            for course in self.courses:
+                course.display_info()
+        else:
+            print("No courses enrolled.")
+
+    def greet(self):
+        print("Greeting to the Academic from person", self.name)
+
+    def enroll(self, course):
+        self.courses.append(course)
+
+
+# Class: Course (not derived from Person)
+class Course:
+    def __init__(self, course_id, course_name, credits):
+        self.course_id = course_id
+        self.course_name = course_name
+        self.credits = credits
+
+    def display_info(self):
+        print(f"Course ID: {self.course_id}, Name: {self.course_name}, Credits: {self.credits}")
 
 
 # Derived class: Academic Staff
@@ -47,12 +71,21 @@ class GeneralStaff(Person):
 
 
 # Example usage
+c1 = Course("CS101", "Intro to Computer Science", 3)
+c2 = Course("MATH201", "Discrete Mathematics", 4)
+
 s1 = Student("Siman", "123 Street", 20, "S001", "GPA: 3.8")
 a1 = Academic("Dr. Anjan", "456 Avenue", 45, "A123", "TAX789", 85000)
 g1 = GeneralStaff("Marley", "789 Road", 35, "G456", "TAX456", 25.5)
+
+# Enroll student in courses
+s1.enroll(c1)
+s1.enroll(c2)
 
 s1.display_info()
 print()
 a1.display_info()
 print()
 g1.display_info()
+print()
+s1.greet()
