@@ -1,26 +1,62 @@
-class Circle:
-    def draw(self):
+from abc import ABC, abstractmethod
+
+# 1) Abstract Product
+class Shape(ABC):
+    @abstractmethod
+    def draw(self) -> str:
+        """Render the shape and return a description."""
+        pass
+
+
+# 2) Concrete Products
+class Circle(Shape):
+    def draw(self) -> str:
         return "Drawing a Circle"
 
-class Square:
-    def draw(self):
+
+class Square(Shape):
+    def draw(self) -> str:
         return "Drawing a Square"
 
-class NullShape:
-    def draw(self):
-        return "Unknown shape - nothing to draw"
+#adding the triangle shape
+class triangle(Shape):
+    def draw(self) -> str:
+        return "Drawing a triangle"
 
+
+# 3) Factory
 class ShapeFactory:
-    def create_shape(self, shape_type):
-        if shape_type == "circle":
-            return Circle()
-        elif shape_type == "square":
-            return Square()
-        else:
-            return NullShape()  # Return a default shape instead of raising error
+    _registry = {
+        "circle": Circle,
+        "square": Square,
+        "triangle": triangle,
+    }
 
-factory = ShapeFactory()
+    @classmethod
+    def register(cls, name: str, shape_cls: type[Shape]) -> None:
+        """Optionally register new shapes without modifying factory code."""
+        if not issubclass(shape_cls, Shape):
+            raise TypeError("Registered class must inherit from Shape")
+        cls._registry[name.lower()] = shape_cls
 
-shape = factory.create_shape("triangle")  # Returns NullShape instead of error
-print(shape.draw())  # Outputs: Unknown shape - nothing to draw
+    @classmethod
+    def create(cls, shape_type: str) -> Shape:
+        shape_cls = cls._registry.get(shape_type.lower())
+        if shape_cls is None:
+            raise ValueError(f"Unknown shape type: {shape_type!r}. "
+                             f"Available: {', '.join(cls._registry)}")
+        return shape_cls()
 
+
+# 4) Client code (examples)
+if __name__ == "__main__":
+    factory = ShapeFactory
+
+    circle = factory.create("circle") # creating circle object
+    print(circle.draw())  
+
+    square = factory.create("square") # creating square object
+    print(square.draw())  
+
+    triangle = factory.create("triangle") # creating triangle object
+    print(triangle.draw())
